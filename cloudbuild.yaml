@@ -1,0 +1,14 @@
+steps:
+  - name: node
+    entrypoint: "bash"
+    args:
+      - "-c"
+      - |
+        npm install && npm test && npm run build
+
+  - name: "gcr.io/cloud-builders/gcloud"
+    entrypoint: "bash"
+    args:
+      - "-c"
+      - |
+        gcloud functions deploy ts-template --runtime nodejs16 --trigger-http --allow-unauthenticated --region australia-southeast1 --entry-point helloWorld
