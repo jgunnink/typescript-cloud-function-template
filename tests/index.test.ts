@@ -1,16 +1,22 @@
 import { expect } from "chai";
 import { helloWorld } from "../src/index";
+import { Request, Response } from "express";
+
+interface testObject {
+  args: Partial<Request>;
+  response: any; // We use any here to allow any kind of test response from the function to be passed in.
+}
 
 describe("when a message is provided", () => {
-  const tests = [
-    { args: { body: { message: "Hi" } }, expected: { message: "Hi" } },
-    { args: { body: { message: "12" } }, expected: { message: "12" } },
+  const tests: testObject[] = [
+    { args: { body: { message: "Hi" } }, response: { message: "Hi" } },
+    { args: { body: { message: "12" } }, response: { message: "12" } },
   ];
 
-  tests.forEach(({ args, expected }) => {
+  tests.forEach(({ args, response }) => {
     it(`returns ${args.body.message} when request body is ${JSON.stringify(args.body)}`, () => {
-      const result = helloWorld(args, { send: () => null });
-      expect(result).to.deep.eq(expected);
+      const result = helloWorld(args as Request, { send: () => null } as Response);
+      expect(result).to.deep.eq(response);
     });
   });
 });
@@ -25,7 +31,7 @@ describe("when a message is not provided", () => {
 
   tests.forEach(({ args, expected }) => {
     it(`returns Hello World! when request body is ${JSON.stringify(args.body)}`, () => {
-      const result = helloWorld(args, { send: () => null });
+      const result = helloWorld(args as Request, { send: () => null } as Response);
       expect(result).to.deep.eq(expected);
     });
   });
