@@ -13,7 +13,7 @@
   "author": "JK Gunnink",
   "license": "MIT",
   "devDependencies": {
-    "@google-cloud/functions-framework": "^1.9.0",
+    "@google-cloud/functions-framework": "^3.1.2",
     "@types/chai": "^4.3.0",
     "@types/express": "^4.17.13",
     "@types/mocha": "^9.1.0",
