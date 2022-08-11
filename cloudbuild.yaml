@@ -11,4 +11,4 @@ steps:
     args:
       - "-c"
       - |
-        gcloud functions deploy ts-template --runtime nodejs16 --trigger-http --allow-unauthenticated --region australia-southeast1 --entry-point helloWorld
+        gcloud functions deploy ts-template --gen2 --runtime=nodejs16 --trigger-http --allow-unauthenticated --region australia-southeast1 --entry-point=helloWorld
