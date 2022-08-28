@@ -1,12 +1,12 @@
 {
   "name": "ts-template",
-  "version": "1.0.0",
-  "description": "A typescript function used to notify github of pipeline changes.",
+  "version": "1.2.0",
+  "description": "A typescript function which is a template for building cloud functions on GCP quickly.",
   "repository": "jgunnink/typescript-cloud-function-template",
   "main": "dist/index.js",
   "scripts": {
     "start": "npx tsc-watch --onSuccess 'npx @google-cloud/functions-framework --target=helloWorld'",
-    "deploy": "gcloud functions deploy ts-template --runtime nodejs16 --trigger-http --allow-unauthenticated --region australia-southeast1 --entry-point helloWorld",
+    "deploy": "gcloud functions deploy ts-template --gen2 --runtime nodejs16 --trigger-http --allow-unauthenticated --region australia-southeast1 --entry-point=helloWorld",
     "build": "npx tsc",
     "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'tests/**/*.ts'"
   },
