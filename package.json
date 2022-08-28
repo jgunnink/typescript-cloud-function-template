@@ -1,7 +1,7 @@
 {
   "name": "ts-template",
   "version": "1.0.0",
-  "description": "A typescript function used to notify github of pipeline changes.",
+  "description": "A typescript function which is a template for building cloud functions on GCP quickly.",
   "repository": "jgunnink/typescript-cloud-function-template",
   "main": "dist/index.js",
   "scripts": {
