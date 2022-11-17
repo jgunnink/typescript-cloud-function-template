@@ -14,11 +14,11 @@
   "license": "MIT",
   "devDependencies": {
     "@google-cloud/functions-framework": "^3.1.2",
-    "@types/chai": "^4.3.3",
+    "@types/chai": "^4.3.4",
     "@types/express": "^4.17.14",
     "@types/mocha": "^10.0.0",
     "@types/node": "^18.11.9",
-    "chai": "^4.3.6",
+    "chai": "^4.3.7",
     "mocha": "^10.1.0",
     "ts-node": "^10.9.1",
     "tsc-watch": "^5.0.3",
