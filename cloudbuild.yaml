@@ -1,4 +1,5 @@
 steps:
+steps:
   - name: node
     entrypoint: "bash"
     args:
@@ -6,9 +7,15 @@ steps:
       - |
         npm install && npm test && npm run build
 
-  - name: "gcr.io/cloud-builders/gcloud"
-    entrypoint: "bash"
+  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
     args:
-      - "-c"
-      - |
-        gcloud functions deploy ts-template --gen2 --runtime=nodejs16 --trigger-http --allow-unauthenticated --region australia-southeast1 --entry-point=helloWorld
+      - gcloud
+      - functions
+      - deploy
+      - create-ern
+      - --gen2
+      - --runtime=nodejs18
+      - --trigger-http
+      - --allow-unauthenticated
+      - --region=australia-southeast1
+      - --entry-point=handleNewErn
