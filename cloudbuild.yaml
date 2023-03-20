@@ -12,10 +12,10 @@ steps:
       - gcloud
       - functions
       - deploy
-      - create-ern
+      - hello-world
       - --gen2
       - --runtime=nodejs18
       - --trigger-http
       - --allow-unauthenticated
       - --region=australia-southeast1
-      - --entry-point=handleNewErn
+      - --entry-point=helloWorld
