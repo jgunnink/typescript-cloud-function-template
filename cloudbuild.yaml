@@ -13,14 +13,15 @@ steps:
       - deploy
       - ${_SERVICE_NAME}
       - --gen2
-      - --runtime=nodejs18
+      - --runtime=${_RUNTIME}
       - --trigger-http
       - --allow-unauthenticated
       - --region=${_REGION}
       - --entry-point=${_ENTRY_POINT}
-      - --memory=128MB
+      - --memory=128Mi
 
 substitutions:
+  _RUNTIME: nodejs18
   _SERVICE_NAME: hello-world
   _REGION: australia-southeast1
   _ENTRY_POINT: helloWorld
