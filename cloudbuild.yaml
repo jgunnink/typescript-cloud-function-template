@@ -12,10 +12,15 @@ steps:
       - gcloud
       - functions
       - deploy
-      - hello-world
+      - ${_SERVICE_NAME}
       - --gen2
       - --runtime=nodejs18
       - --trigger-http
       - --allow-unauthenticated
-      - --region=australia-southeast1
-      - --entry-point=helloWorld
+      - --region=${_REGION}
+      - --entry-point=${_ENTRY_POINT}
+
+substitutions:
+  _SERVICE_NAME: hello-world
+  _REGION: australia-southeast1
+  _ENTRY_POINT: helloWorld
