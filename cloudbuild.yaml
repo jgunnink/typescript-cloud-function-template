@@ -1,5 +1,4 @@
 steps:
-steps:
   - name: node
     entrypoint: "bash"
     args:
@@ -19,6 +18,7 @@ steps:
       - --allow-unauthenticated
       - --region=${_REGION}
       - --entry-point=${_ENTRY_POINT}
+      - --memory=128MB
 
 substitutions:
   _SERVICE_NAME: hello-world
