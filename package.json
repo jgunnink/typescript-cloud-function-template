@@ -14,7 +14,7 @@
   "license": "MIT",
   "dependencies": {
     "@google-cloud/functions-framework": "^3.3.0",
-    "typescript": "^5.3.3"
+    "typescript": "^5.4.3"
   },
   "devDependencies": {
     "@types/chai": "^4.3.11",
