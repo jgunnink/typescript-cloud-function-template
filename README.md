@@ -10,6 +10,8 @@ It includes:
 - Cloudbuild yaml file for easy integration to continuous delivery if required.
 - Github Actions for testing and branch status checks on PR merges.
 
+Requires Node v20 or higher.
+
 ## Usage
 
 ### Local hosting

@@ -1,14 +1,17 @@
 {
   "name": "ts-template",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "description": "A typescript function which is a template for building cloud functions on GCP quickly.",
   "repository": "jgunnink/typescript-cloud-function-template",
   "main": "dist/index.js",
   "scripts": {
     "start": "npx tsc-watch --onSuccess 'npx @google-cloud/functions-framework --target=helloWorld'",
-    "deploy": "gcloud functions deploy ts-template --gen2 --runtime=nodejs18 --trigger-http --allow-unauthenticated --region australia-southeast1 --entry-point=helloWorld",
+    "deploy": "gcloud functions deploy ts-template --gen2 --runtime=nodejs20 --trigger-http --allow-unauthenticated --region australia-southeast1 --entry-point=helloWorld",
     "build": "npx tsc",
     "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' nyc --reporter=lcov mocha -r ts-node/register 'tests/**/*.ts'"
+  },
+  "engines": {
+    "node": ">=20.0.0 <21.0.0"
   },
   "author": "JK Gunnink",
   "license": "MIT",
