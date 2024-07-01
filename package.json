@@ -22,10 +22,10 @@
   "devDependencies": {
     "@types/chai": "^4.3.11",
     "@types/express": "^4.17.21",
-    "@types/mocha": "^10.0.6",
+    "@types/mocha": "^10.0.7",
     "@types/node": "^20.14.9",
     "chai": "^4.3.10",
-    "mocha": "^10.4.0",
+    "mocha": "^10.5.2",
     "nyc": "^15.1.0",
     "ts-node": "^10.9.2",
     "tsc-watch": "^6.2.0"
