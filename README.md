@@ -31,3 +31,9 @@ To see how your function would respond once deployed.
 ### Testing
 
 `npm test` will run all tests in the /tests folder.
+
+## Deployment
+
+You can run `npm run deploy` to deploy the current latest version. You should be authenticated with the gcloud CLI to do this.
+
+You can also run `npm run deploy20` to deploy node version 20 if you prefer.
