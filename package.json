@@ -1,6 +1,6 @@
 {
   "name": "ts-template",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "A typescript function which is a template for building cloud functions on GCP quickly.",
   "repository": "jgunnink/typescript-cloud-function-template",
   "main": "dist/index.js",
@@ -12,7 +12,7 @@
     "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' nyc --reporter=lcov mocha -r ts-node/register 'tests/**/*.ts'"
   },
   "engines": {
-    "node": ">=20.0.0 <23.0.0"
+    "node": ">=20.0.0 <25.0.0"
   },
   "author": "JK Gunnink",
   "license": "MIT",
