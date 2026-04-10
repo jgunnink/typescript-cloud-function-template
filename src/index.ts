@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import type { Request, Response } from "express";
 
 export const helloWorld = (req: Request, res: Response) => {
   const replyMessage = req.body.message || "Hello World!";
