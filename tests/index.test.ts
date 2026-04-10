@@ -1,6 +1,6 @@
 import { expect } from "chai";
-import { helloWorld } from "../src/index";
-import { Request, Response } from "express";
+import { helloWorld } from "../src/index.ts";
+import type { Request, Response } from "express";
 
 interface testObject {
   args: Partial<Request>;
