@@ -1,6 +1,12 @@
 name: Dependabot auto-merge
 
-on: pull_request
+# pull_request runs before CI finishes. With no required checks, `gh pr merge --auto`
+# squash-merges immediately, including when the tests fail. This waits until the CI
+# workflow has completed successfully, then merges that exact commit.
+on:
+  workflow_run:
+    workflows: ["CI"]
+    types: [completed]
 
 permissions:
   contents: write
@@ -9,10 +15,29 @@ permissions:
 jobs:
   dependabot:
     runs-on: ubuntu-latest
-    if: github.actor == 'dependabot[bot]'
+    if: >
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event == 'pull_request' &&
+      github.event.workflow_run.actor.login == 'dependabot[bot]'
     steps:
-      - name: Enable auto-merge for Dependabot PRs
-        run: gh pr merge --auto --squash "$PR_URL"
+      - name: Squash-merge the Dependabot PR that passed CI
         env:
-          PR_URL: ${{github.event.pull_request.html_url}}
-          GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          HEAD_BRANCH: ${{ github.event.workflow_run.head_branch }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          set -euo pipefail
+          pr_json=$(gh pr list \
+            --repo "$GITHUB_REPOSITORY" \
+            --head "$HEAD_BRANCH" \
+            --state open \
+            --json number,headRefOid,author)
+          number=$(printf '%s' "$pr_json" | jq -r --arg sha "$HEAD_SHA" '
+            map(select(.headRefOid == $sha and .author.login == "dependabot[bot]"))
+            | if length == 1 then .[0].number else empty end
+          ')
+          if [ -z "$number" ]; then
+            echo "No open Dependabot pull request for $HEAD_BRANCH at $HEAD_SHA."
+            exit 0
+          fi
+          gh pr merge "$number" --squash --repo "$GITHUB_REPOSITORY"
