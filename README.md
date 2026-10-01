@@ -10,7 +10,7 @@ It includes:
 - Cloudbuild yaml file for easy integration to continuous delivery if required.
 - Github Actions for testing and branch status checks on PR merges.
 
-Requires Node v20 or higher.
+Requires Node v20 or higher to install and build. `npm test` needs Node 22.12+ or Node 24, which run the TypeScript tests directly.
 
 ## Usage
 
@@ -30,7 +30,7 @@ To see how your function would respond once deployed.
 
 ### Testing
 
-`npm test` will run all tests in the /tests folder.
+`npm test` will run all tests in the /tests folder and write a coverage report to `coverage/`.
 
 ## Deployment
 

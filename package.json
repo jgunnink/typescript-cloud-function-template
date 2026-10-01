@@ -10,7 +10,7 @@
     "deploy20": "gcloud functions deploy ts-template --gen2 --runtime=nodejs20 --trigger-http --allow-unauthenticated --region australia-southeast1 --entry-point=helloWorld",
     "deploy22": "gcloud functions deploy ts-template --gen2 --runtime=nodejs22 --trigger-http --allow-unauthenticated --region australia-southeast1 --entry-point=helloWorld",
     "build": "npx tsc",
-    "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' nyc --reporter=lcov mocha -r ts-node/register 'tests/**/*.ts'"
+    "test": "env NODE_OPTIONS='--experimental-strip-types --disable-warning=MODULE_TYPELESS_PACKAGE_JSON' c8 --reporter=lcov --include 'src/**/*.ts' mocha --extension ts 'tests/**/*.ts'"
   },
   "engines": {
     "node": ">=20.0.0 <25.0.0"
@@ -26,10 +26,9 @@
     "@types/express": "^5.0.5",
     "@types/mocha": "^10.0.10",
     "@types/node": "^26.6.3",
+    "c8": "^12.0.0",
     "chai": "^6.2.1",
     "mocha": "^12.0.2",
-    "nyc": "^18.0.0",
-    "ts-node": "^10.9.2",
     "tsc-watch": "^7.2.1"
   }
 }
